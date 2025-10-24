@@ -1,0 +1,121 @@
+/**
+ * Global Styles
+ * TailwindCSS base styles and custom utilities
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 p-0 font-sans antialiased;
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  /* Loading animation */
+  .loading-dots {
+    @apply inline-flex gap-1;
+  }
+
+  .loading-dots span {
+    @apply w-2 h-2 bg-primary-500 rounded-full;
+    animation: loading-dots 1.4s infinite ease-in-out both;
+  }
+
+  .loading-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  .loading-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  @keyframes loading-dots {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+
+  /* Citation button styles */
+  .citation-btn {
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-semibold;
+    @apply bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 rounded-lg;
+    @apply hover:from-purple-200 hover:to-blue-200 transition-all cursor-pointer;
+    @apply border border-purple-300 shadow-sm hover:shadow-md;
+  }
+
+  /* Message bubble styles */
+  .message-bubble {
+    @apply max-w-[85%] p-4 rounded-lg shadow-sm;
+  }
+
+  .message-bubble.user {
+    @apply bg-primary-500 text-white ml-auto;
+  }
+
+  .message-bubble.assistant {
+    @apply bg-white text-gray-900 border border-gray-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Blob animation */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  @keyframes blob {
+    0%, 100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+  }
+}
